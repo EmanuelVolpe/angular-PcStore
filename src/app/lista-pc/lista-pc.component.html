@@ -1,0 +1,29 @@
+<div class="container">
+    <table class="table table-striped text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Modelo</th>
+                <th>Procesador</th>
+                <th>Memoria RAM (GB)</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Compras</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let computadora of computadoras" [ngClass]="{'clearance':computadora.clearance}">
+                <td>{{computadora.modelo}}</td>
+                <td>{{computadora.procesador}}</td>
+                <td>{{computadora.memoria}}</td>
+                <td>{{computadora.precio | currency}}</td>
+                <td><span class="badge badge-warning" *ngIf="computadora.stock==0">Sin Stock</span></td>
+                <td><button class="btn btn-success btn-sm" (click)="downQuantity(computadora)">-</button>
+                    <input [(ngModel)]="computadora.quantity"
+                    (keyup) = "changeQuantity($event, computadora)">
+                    <button class="btn btn-success btn-sm" (click)="upQuantity(computadora)">+</button>
+                    {{computadora.quantity}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
