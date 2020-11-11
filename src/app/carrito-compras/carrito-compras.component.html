@@ -1,1 +1,6 @@
-
+<h2>CARRITO DE COMPRAS</h2>
+<ul>
+    <li *ngFor= "let computadora of (listaCarrito$ | async)">
+        {{computadora.modelo}}: {{computadora.quantity}}
+        
+</ul>

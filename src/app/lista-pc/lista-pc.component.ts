@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoDeComprasService } from '../carrito-de-compras.service';
 import { Computadora } from './Computadora';
 
 @Component({
@@ -48,23 +49,19 @@ export class ListaPcComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private carrito:CarritoDeComprasService) { }
 
   ngOnInit(): void {
   }
 
-  upQuantity(computadora: Computadora): void {
-    if(computadora.quantity < computadora.stock)
-    computadora.quantity++;
+  maxReached(m: string){
+    alert(m);
   }
 
-  downQuantity(computadora: Computadora): void {
-    if(computadora.quantity > 0)
-    computadora.quantity--;
-  }
-
-  changeQuantity($event, computadora: Computadora){
-    console.log(event.target);
+  agregaAlCarrito(computadora):void{
+    this.carrito.agregaAlCarrito(computadora);
+    computadora.stock -= computadora.quantity;
+    computadora.quantity = 0;
   }
 
 }

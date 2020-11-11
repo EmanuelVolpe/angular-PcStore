@@ -8,6 +8,7 @@ import { CarritoComprasComponent } from './carrito-compras/carrito-compras.compo
 import { FormsModule } from '@angular/forms';
 import { PcstoreContactoComponent } from './pcstore-contacto/pcstore-contacto.component';
 import { PcstoreComputadorasComponent } from './pcstore-computadoras/pcstore-computadoras.component';
+import { InputNumeroComponent } from './input-numero/input-numero.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PcstoreComputadorasComponent } from './pcstore-computadoras/pcstore-com
     PcstoreContactoComponent,
     CarritoComprasComponent,
     PcstoreComputadorasComponent,
+    InputNumeroComponent,
     
   ],
   imports: [

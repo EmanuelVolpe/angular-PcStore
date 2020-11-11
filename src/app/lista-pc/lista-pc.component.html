@@ -1,3 +1,4 @@
+<h1>PRODUCTOS</h1>
 <div class="container">
     <table class="table table-striped text-center">
         <thead class="thead-dark">
@@ -7,7 +8,8 @@
                 <th>Memoria RAM (GB)</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Compras</th>
+                <th>Cantidad</th>
+                <th>Comprar</th>
             </tr>
         </thead>
         <tbody>
@@ -17,11 +19,11 @@
                 <td>{{computadora.memoria}}</td>
                 <td>{{computadora.precio | currency}}</td>
                 <td><span class="badge badge-warning" *ngIf="computadora.stock==0">Sin Stock</span></td>
-                <td><button class="btn btn-success btn-sm" (click)="downQuantity(computadora)">-</button>
-                    <input [(ngModel)]="computadora.quantity"
-                    (keyup) = "changeQuantity($event, computadora)">
-                    <button class="btn btn-success btn-sm" (click)="upQuantity(computadora)">+</button>
-                    {{computadora.quantity}}
+                <td>
+                    <app-input-numero [(quantity)]="computadora.quantity"  [max]="computadora.stock" *ngIf="computadora.stock" (maxReached)="maxReached($event)"></app-input-numero>Cantidad: {{computadora.quantity}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="agregaAlCarrito(computadora)">Comprar</button>
                 </td>
             </tr>
         </tbody>
